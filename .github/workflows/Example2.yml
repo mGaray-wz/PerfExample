@@ -32,9 +32,9 @@ jobs:
       - name: install jmeter
         run: |
           java -version
-          wget https://downloads.apache.org//jmeter/binaries/apache-jmeter-5.4.1.zip
-          unzip apache-jmeter-5.4.1.zip
-          cd apache-jmeter-5.4.1/bin
+          wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.4.3.zip
+          unzip apache-jmeter-5.4.3.zip
+          cd apache-jmeter-5.4.3/bin
           ./jmeter -v
           pwd
 
