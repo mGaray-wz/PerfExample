@@ -46,5 +46,5 @@ jobs:
 
       - name: run jmx scripts
         run: |
-         cd $GITHUB_WORKSPACE
+         cd $GITHUB_WORKSPACE/
          ./jmeter -n -t PerfExample.jmx
