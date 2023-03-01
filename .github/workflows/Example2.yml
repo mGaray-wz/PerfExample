@@ -52,10 +52,10 @@ jobs:
       - name: run jmx scripts
         run: |
          cd $GITHUB_WORKSPACE/apache-jmeter-5.4.3/bin
-         ./jmeter -n -t $GITHUB_WORKSPACE/PerfExample.jmx -l $GITHUB_WORKSPACE/results.jtl -e -o 
+         ./jmeter -n -t $GITHUB_WORKSPACE/PerfExample.jmx -l $GITHUB_WORKSPACE/results.jtl -e -o $GITHUB_WORKSPACE/dashboard.html
          
       - name: Upload Results
         uses: actions/upload-artifact@v3.1.2
         with:
           name: jmeter-results
-          path: results.jtl
+          path: dashboard.html
