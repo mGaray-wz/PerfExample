@@ -22,8 +22,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - name: where are the files?
+      - uses: actions/checkout@v3.3.0
+      - name: Locate the files
         run: |
            pwd
            ls
@@ -48,3 +48,9 @@ jobs:
         run: |
          cd $GITHUB_WORKSPACE/apache-jmeter-5.4.3/bin
          ./jmeter -n -t $GITHUB_WORKSPACE/PerfExample.jmx -l Results.jtl
+         
+      - name: Upload Results
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: jmeter-results
+          path: $GITHUB_WORKSPACE/Results.jtl
