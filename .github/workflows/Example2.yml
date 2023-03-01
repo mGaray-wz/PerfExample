@@ -31,6 +31,7 @@ jobs:
       - name: Setup Java JDK
         uses: actions/setup-java@v3.10.0
         with:
+          distribution: oracle
           java-version: 17
   
       # Runs a set of commands using the runners shell
