@@ -28,6 +28,11 @@ jobs:
            pwd
            ls
 
+      - name: Setup Java JDK
+        uses: actions/setup-java@v3.10.0
+        with:
+          java-version: 17
+  
       # Runs a set of commands using the runners shell
       - name: install jmeter
         run: |
@@ -47,7 +52,7 @@ jobs:
       - name: run jmx scripts
         run: |
          cd $GITHUB_WORKSPACE/apache-jmeter-5.4.3/bin
-         ./jmeter -n -t $GITHUB_WORKSPACE/PerfExample.jmx -l $GITHUB_WORKSPACE/results.jtl
+         ./jmeter -n -t $GITHUB_WORKSPACE/PerfExample.jmx -l $GITHUB_WORKSPACE/results.jtl -e -o 
          
       - name: Upload Results
         uses: actions/upload-artifact@v3.1.2
