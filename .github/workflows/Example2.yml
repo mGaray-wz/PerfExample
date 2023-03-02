@@ -59,4 +59,9 @@ jobs:
         uses: actions/upload-artifact@v3.1.2
         with:
           name: jmeter-results
-          path: index.html
+          path: ./PerfExample/PerfExample/results/index.html
+          
+      - name: Locate the results
+        run: |
+           pwd
+           ls
