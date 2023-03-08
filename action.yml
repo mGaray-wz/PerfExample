@@ -12,6 +12,11 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          credentials_json: '{"test":"test"}'
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
     - id: random-number-generator
