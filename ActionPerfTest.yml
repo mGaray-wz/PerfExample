@@ -1,0 +1,20 @@
+name: "Generate GCP isntance Action"
+author: "Mario Garay"
+description: "Creates VM instances in Google Cloud"
+
+inputs:
+  url:
+    description: |-
+      Small description
+      as example.
+    default: testDefault.com
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: Custom action test
+      id: testId
+      run: |
+        echo "Hello test"
+      shell: bash
