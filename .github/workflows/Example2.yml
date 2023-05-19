@@ -5,7 +5,7 @@ on:
     inputs:
       branch_name:
         description: 'Nombre de la rama'
-        required: true
+        required: false
 
 jobs:
   get-branch-name:
