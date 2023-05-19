@@ -1,28 +1,16 @@
-name: For test-learn purpose Only
-on:
+name: Obtener nombre de la rama
 
+on:
   workflow_dispatch:
     inputs:
-      environment:
-        description: 'Environment where test will be executed'
+      branch_name:
+        description: 'Nombre de la rama'
         required: true
-        default: 'per'
-        type: choice
-        options:
-          - stg
-          - per
-env:
-  SLACK_NOTIFICATIONS: false
 
 jobs:
-  test_steps:
-    name: Testing steps
+  get-branch-name:
     runs-on: ubuntu-latest
-    permissions:
-      contents: 'read'
-      id-token: 'write'
 
     steps:
-      - name: Test
-        run: |
-          echo "Nombre de la rama actual: ${{ env.GITHUB_REF_NAME }}"
+      - name: Imprimir nombre de la rama
+        run: echo "Nombre de la rama: ${{ github.event.inputs.branch_name }}"
