@@ -14,4 +14,4 @@ jobs:
     steps:
       - name: Imprimir nombre de la rama
         run: |
-          echo "Nombre de la rama: ${{ github.event.inputs.branch_name }}"
+          echo "Nombre de la rama: ${GITHUB_REF#refs/heads/}"
