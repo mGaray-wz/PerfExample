@@ -1,11 +1,14 @@
-name: Obtener nombre de la rama
+name: Nombrecin ${{inputs.custom}}
 
 on:
   workflow_dispatch:
     inputs:
-      branch_name:
-        description: 'Nombre de la rama'
+      custom:
+        description: 'Custom parameter, can be used in script as ${CUSTOM}'
         required: false
+        default: 'value'
+        type: string
+
 
 jobs:
   get-branch-name:
