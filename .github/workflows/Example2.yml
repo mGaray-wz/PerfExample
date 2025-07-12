@@ -1,17 +1,23 @@
-name: Obtener nombre de la rama
+name: Local test
 
 on:
   workflow_dispatch:
     inputs:
-      branch_name:
+      test_input:
         description: 'Nombre de la rama'
         required: false
+        default: 'olakase'
 
 jobs:
-  get-branch-name:
+  test-local-job:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Imprimir nombre de la rama
+      - name: Testing things
         run: |
           echo "Nombre de la rama: ${GITHUB_REF#refs/heads/}"
+          echo "todo en orden"
+          echo "Hola, ${{ inputs.test_input }}"
+
+          chmod +x script.sh
+          ./script.sh
