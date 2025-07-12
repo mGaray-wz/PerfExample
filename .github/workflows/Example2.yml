@@ -13,11 +13,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: checkout
+        uses: 'actions/checkout@v4'
+
       - name: Testing things
         run: |
           echo "Nombre de la rama: ${GITHUB_REF#refs/heads/}"
           echo "todo en orden"
           echo "Hola, ${{ inputs.test_input }}"
+
+          ls -l
 
           chmod +x script.sh
           ./script.sh
