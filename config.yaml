@@ -1,0 +1,65 @@
+execution_config:
+  send_slack: false # handle slack messages
+  create_jira: false # handle jira ticket creation
+gitbub: 
+  repo: performance-plm-jmeter-gce-tests
+  owner: televisa-univision
+  queue_wf: perf_test_queue.yml # workflow to add test to queue.
+  test_execution_wf: debug_workflow.yml # workflow to trigger test execution.
+  branch: PERF-1511
+pulumi:
+  project_name: performance-plm-jmeter-gce-tests # same as Pulumi.yaml
+  organization: univision
+slack_config:
+  workspace: univision.slack.com
+  endpoint: /api/chat.postMessage
+jira:
+  host: televisaunivision.atlassian.net
+  user: vixitjira@gmail.com
+  project_key: PERF
+  issue_type: Task
+team_members:
+  - name: Mario Garay
+    slack_id: <@U0826BVES1M>
+  - name: Alejandro Longas
+    slack_id: <@U082LQWLQ91>
+test_types: # internal logic
+  threads: concurrency-test
+  tst: throughput-controlled-test
+supported_services:
+  - id: capi
+    scripts: [Client,SuperBowl,CAPI_SZ]
+    dependencies: []
+  - id: csearch
+    scripts: [ContentSearch]
+    dependencies: []
+  - id: cservice
+    scripts: [ContentService]
+    dependencies: []
+  - id: cds
+    scripts: [CustomerData,CustomerDataOld]
+    dependencies: []
+  - id: entitlement
+    scripts: [Entitlement,EntitlementOld]
+    dependencies: [editorial,rapi,idapi,cds,csearch]
+  - id: experience
+    scripts: [ExperienceEngine]
+    dependencies: []
+  - id: heartbeat
+    scripts: [Heartbeat,Heartbeat_V1,Heartbeat_MT]
+    dependencies: [hb_internal]
+  - id: idapi
+    scripts: [Identity,Identity_Size]
+    dependencies: [cds,heartbeat,experience,cservice]
+  - id: presapi
+    scripts: [Presentation,PresentationOutdated]
+    dependencies: [entitlement,editorial,csearch,rapi]
+  - id: rapi
+    scripts: [Recommendations,Recommendations_SZ]
+    dependencies: [cservice,heartbeat]
+  - id: editorial
+    scripts: [Editorial,Editorial_SZ]
+    dependencies: [rapi,experience,cservice,idapi]
+  - id: sps
+    scripts: [StreamProvider,StreamProviderOld]
+    dependencies: []

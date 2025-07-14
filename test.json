@@ -1,0 +1,24 @@
+{
+  "testName": "20250713_160855UTC_Client_10vu_per",
+  "testType": "concurrency-test",
+  "service": "client-api",
+  "dependencies": [],
+  "executionTest_inputs": {
+    "script": "Client.jmx",
+    "environment": "per",
+    "target": "10",
+    "startupTime": "30",
+    "duration": "30",
+    "shutDownTime": "10",
+    "slack": "C02RE9ZBZL3",
+    "useStaticAddress": "false"
+  },
+  "gceInstances": [
+    "gce-performance-e16e99c0-1-1f1a3a7",
+    "gce-performance-e16e99c0-1-123"
+  ],
+  "resultFiles": [
+    "e16e99c0_1",
+    "e16e99c0_2"
+  ]
+}

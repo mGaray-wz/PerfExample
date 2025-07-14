@@ -1,3 +1,13 @@
 {
-  "test_input": "Carlos"
+  "event_name": "workflow_dispatch",
+  "inputs": {
+    "script": "Client.jmx",
+    "environment": "per",
+    "target": "step(1, 300, 3, 10s)",
+    "startupTime": 1200,
+    "duration": 1200,
+    "shutDownTime": 300,
+    "slack": "12345",
+    "useStaticAddress": false
+  }
 }
