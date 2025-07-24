@@ -1,7 +1,0 @@
-timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
-1747067840857,383,HB - POST /v2/play-session,201,Created,UVTG - Heartbeat 1-41,text,true,,719,2271,50,50,https://heartbeat-api.per.vix.tv/v2/play-session?mediaType=VOD,383,0,112
-1747067840910,404,HB - POST /v2/play-session,201,Created,UVTG - Heartbeat 1-50,text,true,,720,2271,50,50,https://heartbeat-api.per.vix.tv/v2/play-session?mediaType=VOD,404,0,112
-1747067840977,362,HB - POST /v2/play-session,201,Created,UVTG - Heartbeat 1-45,text,true,,719,2272,50,50,https://heartbeat-api.per.vix.tv/v2/play-session?mediaType=LIVE,362,0,111
-1747067841123,377,HB - POST /v2/play-session,201,Created,UVTG - Heartbeat 1-40,text,true,,720,2272,50,50,https://heartbeat-api.per.vix.tv/v2/play-session?mediaType=LIVE,377,0,112
-1747067841166,357,HB - POST /v2/play-session,201,Created,UVTG - Heartbeat 1-31,text,true,,719,2271,50,50,https://heartbeat-api.per.vix.tv/v2/play-session?mediaType=VOD,357,0,112
-1747067841200,390,HB - POST /v2/play-session,201,Created,UVTG - Heartbeat 1-29,text,true,,720,2271,50,50,https://heartbeat-api.per.vix.tv/v2/play-session?mediaType=VOD,390,0,112

@@ -1,0 +1,27 @@
+{
+  "testName": "20250717_173706UTC_ContentService_per",
+  "timeStamp": "2025-07-17T17:37:06Z",
+  "service": "content-service-api",
+  "dependencies": ["client-api1"],
+  "executionTest_inputs": {
+    "script": "ContentService.jmx",
+    "environment": "per",
+    "crConfig": "none",
+    "target": "5000",
+    "startupTime": "1200",
+    "duration": "1200",
+    "shutDownTime": "300",
+    "slack": "C02RE9ZBZL3",
+    "useStaticAddress": "false"
+  },
+  "cloudFunction_params": {
+    "github_owner": "televisa-univision",
+    "github_repo": "performance-plm-jmeter-gce-tests",
+    "github_exec_wf": "performance_tests.yml",
+    "github_branch": "PERF-1511",
+    "gcs_bucket": "performance-team-per",
+    "gcs_queue_folder": "test-queue",
+    "gcs_queue_file": "perfTestQueue.json",
+    "gcs_services_file": "activeServices.txt"
+  }
+}

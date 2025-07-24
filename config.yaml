@@ -6,10 +6,11 @@ gitbub:
   owner: televisa-univision
   queue_wf: perf_test_queue.yml # workflow to add test to queue.
   test_execution_wf: debug_workflow.yml # workflow to trigger test execution.
-  branch: PERF-1511
+  jmx_scripts_folder: JMeter_Scripts # jmeter scripts folder
 pulumi:
   project_name: performance-plm-jmeter-gce-tests # same as Pulumi.yaml
   organization: univision
+  pulumi_file: plm_resources.json # file to store plm created resources ids
 slack_config:
   workspace: univision.slack.com
   endpoint: /api/chat.postMessage
@@ -30,36 +31,120 @@ supported_services:
   - id: capi
     scripts: [Client,SuperBowl,CAPI_SZ]
     dependencies: []
+    cr_config: # same as service PRD requirements.
+      min_instances: 4
+      max_instances: 1500
+      concurreny: 12
+      cpu: 4
+      memory: 8Gi
+      execution_env: gen2
   - id: csearch
     scripts: [ContentSearch]
     dependencies: []
+    cr_config:
+      min_instances: 3
+      max_instances: 1000
+      concurreny: 3
+      cpu: 4
+      memory: 2Gi
+      execution_env: gen2
   - id: cservice
     scripts: [ContentService]
     dependencies: []
+    cr_config:
+      min_instances: 40
+      max_instances: 1000
+      concurreny: 2
+      cpu: 2
+      memory: 2Gi
+      execution_env: gen1
   - id: cds
     scripts: [CustomerData,CustomerDataOld]
     dependencies: []
+    cr_config:
+      min_instances: 20
+      max_instances: 2000
+      concurreny: 2
+      cpu: 4
+      memory: 2Gi
+      execution_env: gen2
   - id: entitlement
     scripts: [Entitlement,EntitlementOld]
     dependencies: [editorial,rapi,idapi,cds,csearch]
+    cr_config:
+      min_instances: 5
+      max_instances: 3000
+      concurreny: 4
+      cpu: 2
+      memory: 512Mi
+      execution_env: gen2
   - id: experience
     scripts: [ExperienceEngine]
     dependencies: []
+    cr_config:
+      min_instances: 3
+      max_instances: 1000
+      concurreny: 20
+      cpu: 4
+      memory: 4Gi
+      execution_env: gen2
   - id: heartbeat
     scripts: [Heartbeat,Heartbeat_V1,Heartbeat_MT]
     dependencies: [hb_internal]
+    cr_config:
+      min_instances: 20
+      max_instances: 1000
+      concurreny: 60
+      cpu: 4
+      memory: 2Gi
+      execution_env: gen2
   - id: idapi
     scripts: [Identity,Identity_Size]
     dependencies: [cds,heartbeat,experience,cservice]
+    cr_config:
+      min_instances: 10
+      max_instances: 3000
+      concurreny: 3
+      cpu: 2
+      memory: 1Gi
+      execution_env: gen2
   - id: presapi
     scripts: [Presentation,PresentationOutdated]
     dependencies: [entitlement,editorial,csearch,rapi]
+    cr_config:
+      min_instances: 3
+      max_instances: 1000
+      concurreny: 9
+      cpu: 2
+      memory: 1Gi
+      execution_env: gen2
   - id: rapi
     scripts: [Recommendations,Recommendations_SZ]
     dependencies: [cservice,heartbeat]
+    cr_config:
+      min_instances: 6
+      max_instances: 1000
+      concurreny: 5
+      cpu: 2
+      memory: 1Gi
+      execution_env: gen1
   - id: editorial
     scripts: [Editorial,Editorial_SZ]
     dependencies: [rapi,experience,cservice,idapi]
+    cr_config:
+      min_instances: 4
+      max_instances: 1000
+      concurreny: 5
+      cpu: 4
+      memory: 4Gi
+      execution_env: gen1
   - id: sps
     scripts: [StreamProvider,StreamProviderOld]
     dependencies: []
+    cr_config:
+      min_instances: 2
+      max_instances: 1000
+      concurreny: 9
+      cpu: 2
+      memory: 1Gi
+      execution_env: gen2

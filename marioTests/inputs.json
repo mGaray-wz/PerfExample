@@ -1,0 +1,14 @@
+{
+  "event_name": "workflow_dispatch",
+  "inputs": {
+    "script": "Client.jmx",
+    "environment": "per",
+    "crConfig": "none",
+    "target": "100",
+    "startupTime": 1200,
+    "duration": 1200,
+    "shutDownTime": 300,
+    "slack": "12345",
+    "useStaticAddress": false
+  }
+}

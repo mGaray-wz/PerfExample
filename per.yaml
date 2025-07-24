@@ -1,0 +1,59 @@
+project: 
+  gcp: st-vix-ott-per
+service_accounts:
+  email: sa-performance-team@st-vix-ott-per.iam.gserviceaccount.com
+secrets:
+  secret_id: performance-team-secrets
+storage_bucket:
+  bucket_name:  performanceresults-per # performance-team-bucket
+  queue_folder: test-queue
+  report_folder: test-reports
+  queue_file: perfTestQueue.json
+  services_file: activeServices.txt
+networkInterfaces:
+  network: network-performance-team
+  static_address: 34.138.170.36
+instances:
+  name: gce-performance
+  description: GCE Performance Instance
+  zone: us-east1-b
+  labels:
+    team: performance
+    app: jmeter
+  machine_type: n2d-highmem-32
+  disk_size: 40
+  source_image: projects/st-vix-ott-per/global/images/jmeterjava21adv
+  tags:
+    - performance
+  max_vu_per_instance: 20000
+queue_resources:
+  pub_sub_topic: performance-test-topic
+  cloud_function: performance-test-queue
+  github_dispatcher_secret: secret-key-github-performance
+supported_services:
+  - id: capi
+    name: client-api
+  - id: csearch
+    name: content-search-api
+  - id: cservice
+    name: content-service-api
+  - id: cds
+    name: customer-data-service
+  - id: entitlement
+    name: entitlement-service
+  - id: experience
+    name: experience-engine-service
+  - id: heartbeat
+    name: heartbeat-identity-api
+  - id: hb_internal
+    name: heartbeat-identity-api-internal
+  - id: idapi
+    name: identity-api
+  - id: presapi
+    name: presentation-api
+  - id: rapi
+    name: recommendation-service
+  - id: editorial
+    name: service-editorial-internal
+  - id: sps
+    name: stream-provider-service

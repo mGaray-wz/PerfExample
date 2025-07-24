@@ -14,8 +14,18 @@ on:
         default: "per"
         type: choice
         options:
-          - stg
+          - stg-test
           - per
+      crConfig:
+        description: "CR configuration"
+        required: true
+        default: "production-copy"
+        type: choice
+        options:
+          - none
+          - single-container
+          - scalability
+          - production-copy
       target:
         description: "Concurrency target or TSP property"
         required: true
@@ -58,7 +68,11 @@ jobs:
       - name: checkout
         uses: 'actions/checkout@v4'
 
-      - name: AAAAAh
+      - name: wait for instances
         run: |
-          # configs
-          echo "branch: ${{ github.ref_name }}"
+          #!/bin/bash
+          chmod +x ./script.sh
+          ./script.sh "andele"
+
+
+
